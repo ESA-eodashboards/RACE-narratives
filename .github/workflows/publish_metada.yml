@@ -1,0 +1,40 @@
+name: Publish Metadata to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: pip install markdown pyaml pillow requests
+
+      - name: Extract Metadata
+        run: |
+          mkdir -p output
+          python .github/extract_metadata.py "https://esa-eodashboards.github.io/RACE-narratives/"
+          cp *.md output
+          touch output/.nojekyll
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./output
+          branch: gh-pages
+          clean-exclude: pr-preview
+          force: false
