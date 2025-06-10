@@ -1,12 +1,7 @@
 [
   {
-    "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
-    "date": "2025-01-01",
-    "theme": "water",
-    "tags": "tag1,tag2",
-    "official": true,
-    "file": "https://esa-eodashboards.github.io/RACE-narratives/water_turbidity_CNR_story.md",
-    "title": "Turbidity and Discharge",
+    "file": "https://esa-eodashboards.github.io/RACE-narratives/elbe_CNR_story.md",
+    "title": "Elbe",
     "subtitle": "",
     "image": ""
   },
@@ -29,6 +24,17 @@
     "official": true,
     "file": "https://esa-eodashboards.github.io/RACE-narratives/CropOM.md",
     "title": "Crop Yield",
+    "subtitle": "",
+    "image": ""
+  },
+  {
+    "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
+    "date": "2025-01-01",
+    "theme": "water",
+    "tags": "tag1,tag2",
+    "official": true,
+    "file": "https://esa-eodashboards.github.io/RACE-narratives/water_turbidity_CNR_story.md",
+    "title": "Turbidity and Discharge",
     "subtitle": "",
     "image": ""
   }
