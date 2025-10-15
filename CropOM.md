@@ -2,9 +2,12 @@
 cover-image: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg
 date: 2025-01-01
 theme: land
+subtitle: During growing season, estimates or forecasts of crop yields at the county or regional level can provide highly useful insights.
 tags: tag1,tag2
 official: true
 ---
+
+# CropOM County level crop yield and water demand <!--{ as="img" mode="hero" src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg" }-->
 
 ##
 
