@@ -101,6 +101,13 @@ def extract_metadata(file_path, base_url):
             img_match.group(1), "output/assets/previews", 300
         )
         metadata.update({"image": img_url})
+
+    # Change official to provider, so that we do not have to update all stories
+    if metadata.get("official"):
+        metadata.update({"provider": "agency"})
+    else:
+        metadata.update({"provider": "community"})
+
     metadata.update({"file": file_url})
     return metadata
 
