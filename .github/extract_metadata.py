@@ -68,7 +68,7 @@ def fetch_and_resize_image(image_url, output_dir, target_width):
 def extract_metadata(file_path, base_url):
     """Extracts frontmatter metadata, first H1, first H3, and image URL from a Markdown file."""
     metadata = {}
-    img_url = "", "", ""
+    img_url = ""
     filename = os.path.basename(file_path)
     file_url = base_url.rstrip("/") + "/" + filename  # Ensure proper URL format
 
