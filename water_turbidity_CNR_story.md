@@ -7,8 +7,7 @@ subtitle: Researchers are uncovering how the Po River behaves under different hy
 official: true
 ---
 
-# Tracking the Po river from space
- <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg" }-->
+# Tracking the Po river from space <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg" }-->
 
 # Tracking the Po river from space
 The Po River is Italy’s longest and most important watercourse, stretching over 650 kilometers from the Alps to the Adriatic Sea. Its basin supports one of Europe’s most densely populated and agriculturally productive regions, while also sustaining rich ecosystems across wetlands, floodplains, and the dynamic Po Delta.
