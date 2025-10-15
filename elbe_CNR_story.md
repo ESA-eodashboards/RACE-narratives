@@ -1,3 +1,11 @@
+---
+cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg
+date: 2025-01-01
+theme: water
+tags: tag1,tag2
+official: true
+---
+
 ##  Elbe Estuary Monitoring: Advancing Algorithm Development with Sentinel-3 OLCI Data
 The German Bight and the river Elbe estuary are highly impacted by anthropogenic pressures, and, at the same time, comprise a very sensitive ecosystem including the UNESCO World heritage Wadden Sea. The port of Hamburg is the third busiest port in Europe and 15th-largest worldwide. In 2014, 9.73 million TEUs (20-foot standard container equivalents) were handled in Hamburg, all ships passing through the German bight and the river Elbe to reach the port located 110 km distance from the North Sea. Between the coast and the open North Sea, the Wadden Sea is the largest unbroken system of intertidal sand and mud flats in the world. It is a large, temperate, relatively flat coastal wetland environment, formed by the intricate interactions between physical and biological factors that have given rise to a multitude of transitional habitats with tidal channels, sandy shoals, sea-grass meadows, mussel beds, sandbars, mudflats, salt marshes, estuaries, beaches and dunes.  
 <figure style="text-align: center;">
@@ -59,7 +67,7 @@ The SST L4 is then obtained at 1/16° resolution as a linear combination of the 
 #### Sea surface temperature algorithm development
 The climatology was built by using the Copernicus MED reprocessed (REP) products: [Mediterranean Sea - High Resolution L4 Sea Surface Temperature Reprocessed](https://doi.org/10.48670/moi-00173) and [Black Sea - High Resolution L4 Sea Surface Temperature Reprocessed](https://data.marine.copernicus.eu/product/SST_BS_SST_L4_REP_OBSERVATIONS_010_022/description), respectively). 
 
-These products provide long-term (1982-present), stable and consistent daily gap-free SST datasets at about 5 km grid resolution, particularly useful for climate applications. Specifically, MED REP SST products are built by optimal interpolation of the lower-level (merged single-sensor, L3C) SST climate data record provided by the [ESA Climate Change Initiative (CCI)](https://climate.esa.int/en/) and the [Copernicus Climate Change Service (C3S](https://climate.copernicus.eu/)) initiatives. 
+These products provide long-term (1982-present), stable and consistent daily gap-free SST datasets at about 5 km grid resolution, particularly useful for climate applications. Specifically, MED REP SST products are built by optimal interpolation of the lower-level (merged single-sensor, L3C) SST climate data record provided by the [ESA Climate Change Initiative (CCI)](https://climate.esa.int/en/) and the [Copernicus Climate Change Service (C3S](https://climate.copernicus.eu/) initiatives. 
 
 In order to obtain a consistent dataset with the NRT products, the reprocessed datasets were properly remapped through a bilinear interpolation over a 0.01° regular grid and then cropped to match the four selected areas. RMSD and mean bias for the reprocessed products have been quantified in 0.456 ± 0.001 K and 0.036 ± 0.001 K.
 
@@ -82,8 +90,7 @@ The time series shows weekly CHL concentration offshore the **Elbe Estuary, at t
 * **Blue dots** show weekly values greater than the climatological mean but still inside the climatological variability, indicating regular water quality.
 * **Red dots** stand for values beyond the climatological variability, indicating poorer water quality.
 
-<iframe class="item" src="https://race.esa.int/iframe?poi=DE29-N3" width="800px" height="500px" frameBorder="0" scroll="no" style="overflow:hidden"></iframe>
-
+<img src="https://raw.githubusercontent.com/esa-eodashboards/RACE-narratives/refs/heads/main/assets/DE29-N3_v4_chart.png" style="width: 100%" >
 
 
 ## Sea surface temperature (SST) Time series
@@ -95,4 +102,4 @@ The time series shows weekly SST offshore the **Elbe Estuary, at the Helgoland m
 * 	**Blue dots** show weekly values greater than the climatological mean but still inside the climatological variability, indicating regular sea water temperature.
 * **Red dots** stand for values beyond the climatological variability, indicating warm sea water.
 
-<iframe class="item" src="https://race.esa.int/iframe?poi=DE29-SST" width="800px" height="500px" frameBorder="0" scroll="no" style="overflow:hidden"></iframe>
+<img src="https://raw.githubusercontent.com/esa-eodashboards/RACE-narratives/refs/heads/main/assets/DE29-N3-SST_v4_chart.png" style="width: 100%" >
