@@ -68,7 +68,7 @@ def fetch_and_resize_image(image_url, output_dir, target_width):
 def extract_metadata(file_path, base_url):
     """Extracts frontmatter metadata, first H1, first H3, and image URL from a Markdown file."""
     metadata = {}
-    h1, h3, img_url = "", "", ""
+    img_url = "", "", ""
     filename = os.path.basename(file_path)
     file_url = base_url.rstrip("/") + "/" + filename  # Ensure proper URL format
 
@@ -86,13 +86,13 @@ def extract_metadata(file_path, base_url):
 
     # Extract first H1 header
     h1_match = re.search(r"# (.+?)\s*<!--{.*?}-->", content)
-    if h1_match:
-        h1 = h1_match.group(1)
+    if h1_match and not metadata.get("title"):
+        metadata.update({"title": h1_match.group(1)})
 
     # Extract first H3 header
     h3_match = re.search(r"### (.+?)\s*<!--{.*?}-->", content)
-    if h3_match:
-        h3 = h3_match.group(1)
+    if h3_match and not metadata.get("subtitle"):
+        metadata.update({"subtitle": h3_match.group(1)})
 
     # Extract first image URL
     img_match = re.search(r'<!--{.*?src="(.*?)".*?}-->', content)
@@ -100,10 +100,8 @@ def extract_metadata(file_path, base_url):
         img_url = fetch_and_resize_image(
             img_match.group(1), "output/assets/previews", 300
         )
-
-    # Merge extracted metadata
-    metadata.update({"file": file_url, "title": h1, "subtitle": h3, "image": img_url})
-
+        metadata.update({"image": img_url})
+    metadata.update({"file": file_url})
     return metadata
 
 

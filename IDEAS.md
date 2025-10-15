@@ -3,8 +3,11 @@ cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/h
 date: 2025-01-01
 theme: land
 tags: tag1,tag2
+subtitle: As cities continue to grow and evolve, monitoring urban environments becomes crucial to ensure sustainability and resilience.
 official: true
 ---
+# Using Earth Observation to Track Urban Indicators: Biodiversity, Heat Islands, Flood Risk, and More
+ <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/IDEAS/header_IDEAS_story.jpg" }-->
 
 # Using Earth Observation to Track Urban Indicators: Biodiversity, Heat Islands, Flood Risk, and More
 
@@ -19,7 +22,7 @@ The **IDEAS** project leveraged cross-cutting technologies to create innovative,
 
 The project developed a range of indicators, addressing various societal challenges:
 
-* [Pollution and Urban Heat Islands](https://race.esa.int/?x=2967522.23407&y=6702701.93523&z=5.61664) - (developed by [Murmuration](https://murmuration-sas.com/))
+* [Pollution and Urban Heat Islands](https://race.esa.int/?indicator=IND1_1&x=2967522.23407&y=6702701.93523&z=5.61664) - (developed by [Murmuration](https://murmuration-sas.com/))
 * [Wildlife and Biodiversity](https://race.esa.int/?indicator=IND2_1&x=1001875.41714&y=6402818.2363&z=2.32929) (developed by [Murmuration](https://murmuration-sas.com/))
 * [Real Estate Trends](https://race.esa.int/?indicator=IND5_1&x=159447.63774&y=5396118.06247&z=10.31298) (developed by [Murmuration](https://murmuration-sas.com/))
 * Food Security - (developed by [SISTEMA](https://www.sistema.at))
