@@ -2,8 +2,14 @@
   {
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
     "date": "2025-01-01",
-    "theme": "water",
-    "tags": "tag1,tag2",
+    "theme": [
+      "water",
+      "climate"
+    ],
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "subtitle": "The German Bight and the river Elbe estuary are highly impacted by anthropogenic pressures, and, at the same time, comprise a very sensitive ecosystem including the UNESCO World heritage Wadden Sea.",
     "official": true,
     "title": "Elbe Estuary Monitoring: Advancing Algorithm Development with Sentinel-3 OLCI Data",
@@ -14,9 +20,17 @@
   {
     "cover-image": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg",
     "date": "2025-01-01",
-    "theme": "land",
+    "theme": [
+      "land & nature",
+      "climate",
+      "water",
+      "food & agriculture"
+    ],
     "subtitle": "During growing season, estimates or forecasts of crop yields at the county or regional level can provide highly useful insights.",
-    "tags": "tag1,tag2",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "official": true,
     "title": "CropOM County level crop yield and water demand",
     "image": "assets/previews/Watering_crops_pillars_preview.png",
@@ -26,8 +40,15 @@
   {
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/IDEAS/header_IDEAS_story.jpg",
     "date": "2025-01-01",
-    "theme": "land",
-    "tags": "tag1,tag2",
+    "theme": [
+      "land & nature",
+      "climate",
+      "society & living"
+    ],
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "subtitle": "As cities continue to grow and evolve, monitoring urban environments becomes crucial to ensure sustainability and resilience.",
     "official": true,
     "title": "Using Earth Observation to Track Urban Indicators: Biodiversity, Heat Islands, Flood Risk, and More",
@@ -38,8 +59,14 @@
   {
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
     "date": "2025-01-01",
-    "theme": "water",
-    "tags": "tag1,tag2",
+    "theme": [
+      "water",
+      "climate"
+    ],
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "subtitle": "Researchers are uncovering how the Po River behaves under different hydrological conditions with data from Sentinel-2 and ground-based measurements",
     "official": true,
     "title": "Tracking the Po river from space",

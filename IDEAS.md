@@ -1,7 +1,7 @@
 ---
 cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/IDEAS/header_IDEAS_story.jpg
 date: 2025-01-01
-theme: land
+theme: "land & nature,climate,society & living"
 tags: tag1,tag2
 subtitle: As cities continue to grow and evolve, monitoring urban environments becomes crucial to ensure sustainability and resilience.
 official: true
