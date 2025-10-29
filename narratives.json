@@ -3,8 +3,7 @@
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/elbsandsteingebirge.jpg",
     "date": "2025-01-01",
     "theme": [
-      "water",
-      "climate"
+      "water"
     ],
     "tags": [
       "tag1",
@@ -21,9 +20,6 @@
     "cover-image": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg",
     "date": "2025-01-01",
     "theme": [
-      "land & nature",
-      "climate",
-      "water",
       "food & agriculture"
     ],
     "subtitle": "During growing season, estimates or forecasts of crop yields at the county or regional level can provide highly useful insights.",
@@ -41,9 +37,7 @@
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/IDEAS/header_IDEAS_story.jpg",
     "date": "2025-01-01",
     "theme": [
-      "land & nature",
-      "climate",
-      "society & living"
+      "climate"
     ],
     "tags": [
       "tag1",
@@ -60,8 +54,7 @@
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
     "date": "2025-01-01",
     "theme": [
-      "water",
-      "climate"
+      "water"
     ],
     "tags": [
       "tag1",

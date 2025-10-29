@@ -1,7 +1,7 @@
 ---
 cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/elbsandsteingebirge.jpg
 date: 2025-01-01
-theme: water,climate
+theme: water
 tags: tag1,tag2
 subtitle: The German Bight and the river Elbe estuary are highly impacted by anthropogenic pressures, and, at the same time, comprise a very sensitive ecosystem including the UNESCO World heritage Wadden Sea.
 official: true
