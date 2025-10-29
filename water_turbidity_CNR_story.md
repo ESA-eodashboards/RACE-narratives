@@ -1,7 +1,7 @@
 ---
 cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg
 date: 2025-01-01
-theme: water,climate
+theme: water
 tags: tag1,tag2
 subtitle: Researchers are uncovering how the Po River behaves under different hydrological conditions with data from Sentinel-2 and ground-based measurements
 official: true
