@@ -52,7 +52,9 @@ By visualizing the water needs of sub-county regions and highlighting areas wher
 <center>
 	<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/collections/crop_forecast_CropOM/cm_legend.png" height="50"/>
 	
-	Map Legend
+</center>
+<center>
+Map Legend
 </center>
 <center>
 	<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/RACE/county-water-demand.png"/>
@@ -64,8 +66,9 @@ Yield forecasts are also provided for the same sub-county regions.
 
 <center>
 	<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/collections/crop_forecast_CropOM/cm_legend.png" height="50">
-	
-	Map Legend
+</center>
+<center>
+Map Legend
 </center>
 <center>
 	<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/RACE/subcounty-water-demand.png"/>
@@ -76,10 +79,10 @@ Yield forecasts are also provided for the same sub-county regions.
 Moving further down the scale to microregions, which is essentially the level of municipalities, the information can support the operation of companies, and local communities, providing information on the water demand of agriculture for every actor to facilitate informed discussion on water use.
 <center>
 	<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/collections/crop_forecast_CropOM/cm_legend.png" height="50">
-	
-	Map Legend
 </center>
-
+<center>
+Map Legend
+</center>
 ## CropOM Model API Service
 
 These indicators are provided as a service by [CropOM](https://cropom.com) - a technology company (SME) that develops data integration platform services and integrated software for agriculture, insurance, and education. 
