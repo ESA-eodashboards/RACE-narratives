@@ -83,6 +83,7 @@ Moving further down the scale to microregions, which is essentially the level of
 <center>
 Map Legend
 </center>
+
 ## CropOM Model API Service
 
 These indicators are provided as a service by [CropOM](https://cropom.com) - a technology company (SME) that develops data integration platform services and integrated software for agriculture, insurance, and education. 
