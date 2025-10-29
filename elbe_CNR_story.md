@@ -1,5 +1,5 @@
 ---
-cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/elbsandsteingebirge.jpeg
+cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/elbsandsteingebirge.jpg
 date: 2025-01-01
 theme: water,climate
 tags: tag1,tag2
