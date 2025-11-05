@@ -4,6 +4,7 @@ date: 2025-01-01
 theme: water
 tags: tag1,tag2
 subtitle: Researchers are uncovering how the Po River behaves under different hydrological conditions with data from Sentinel-2 and ground-based measurements
+provider: CNR ISMAR
 official: true
 ---
 

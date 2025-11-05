@@ -107,11 +107,6 @@ def extract_metadata(file_path, base_url):
         metadata.update({"theme": theme.split(",")})
     if tags := metadata.get("tags"):
         metadata.update({"tags": tags.split(",")})
-    # Change official to provider, so that we do not have to update all stories
-    if metadata.get("official"):
-        metadata.update({"provider": "agency"})
-    else:
-        metadata.update({"provider": "community"})
 
     metadata.update({"file": file_url})
     return metadata
