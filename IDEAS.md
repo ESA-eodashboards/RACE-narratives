@@ -4,6 +4,7 @@ date: 2025-01-01
 theme: "climate"
 tags: tag1,tag2
 subtitle: As cities continue to grow and evolve, monitoring urban environments becomes crucial to ensure sustainability and resilience.
+provider: Murmuration
 official: true
 ---
 # Using Earth Observation to Track Urban Indicators: Biodiversity, Heat Islands, Flood Risk, and More  <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/IDEAS/header_IDEAS_story.jpg" }-->

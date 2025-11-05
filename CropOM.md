@@ -4,6 +4,7 @@ date: 2025-01-01
 theme: "food & agriculture"
 subtitle: During growing season, estimates or forecasts of crop yields at the county or regional level can provide highly useful insights.
 tags: tag1,tag2
+provider: CropOM
 official: true
 ---
 
