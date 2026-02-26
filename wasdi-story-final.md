@@ -202,3 +202,8 @@ Besides [acceessing  the notebook](https://esa-eodashboards.github.io/RACE-noteb
 * [Copernicus Emergency Management Service](https://mapping.emergency.copernicus.eu/)  
 *  [SAR Flood Archive Generator 3.3.4](https://wasdi.readthedocs.io/en/latest/WasdiApplications/SARArchiveGenerator.html)
 
+
+#### Contributors
+* WASDI – Data providers
+* Sara Aparício (Solenix) – Notebook use case development; story editing and content development
+* Diego Moglioni (Starion) – Dataset integration
