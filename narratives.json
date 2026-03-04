@@ -1,5 +1,22 @@
 [
   {
+    "cover-image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Hochwasser_Gars_am_Kamp_2024_03.jpg/1200px-Hochwasser_Gars_am_Kamp_2024_03.jpg?20240914153540",
+    "date": "2025-01-01",
+    "theme": [
+      "climate"
+    ],
+    "tags": [
+      "floods",
+      "earth-observation",
+      "wasdi"
+    ],
+    "collections": "WASDI_FLOOD",
+    "title": "Mapping the 2024 Central European Floods with Satellite Technology",
+    "subtitle": "Using remote sensing data and WASDI workflows to monitor flood evolution in open and urban areas",
+    "image": null,
+    "file": "https://esa-eodashboards.github.io/RACE-narratives/wasdi-story-final.md"
+  },
+  {
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
     "date": "2025-01-01",
     "theme": [
