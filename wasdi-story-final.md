@@ -2,7 +2,7 @@
 cover-image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Hochwasser_Gars_am_Kamp_2024_03.jpg/1200px-Hochwasser_Gars_am_Kamp_2024_03.jpg?20240914153540
 
 date: 2025-01-01
-theme: theme_name
+theme: climate
 tags: floods,earth-observation,wasdi
 collections: WASDI_FLOOD
  
