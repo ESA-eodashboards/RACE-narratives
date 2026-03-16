@@ -41,7 +41,7 @@ Satellite imagery from both Sentinel-2A and Sentinel-2B, acquired between 2019 a
 Daily average water discharge data for the Po River at Pontelagoscuro were obtained from the [Environmental Protection Agency of the Region of Emilia Romagna (ARPA-ER)](https://www.arpae.it/it), through a dedicated [data access website](https://simc.arpae.it/dext3r/), enabling the correlation of discharge with satellite image acquisition dates. Water level data from **Pontelagoscuro** and **Cavanella** stations were retrieved from the [AIPO website](https://www.agenziapo.it/content/monitoraggio-idrografico-0). At Pontelagoscuro, water levels are primarily influenced by river discharge, with minimal tidal impact. In contrast, at Cavanella, tidal influence is significant, with clear ebb and flood phases affecting water level measurements.
 
  <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/Gauging_stations.jpg?raw=true" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/Gauging_stations.jpg" >
 </center>
 
 <p style="font-size: 0.85em; text-align: center;">
@@ -51,7 +51,7 @@ Daily average water discharge data for the Po River at Pontelagoscuro were obtai
 During the study period from 2019 to 2022, the discharge measured at the Pontelagoscuro gauging station ranged from 104 to 8011 m³/s, with a mean value of 1164 m³/s. Six discharge ranges were identified: dry discharge (<500 m³/s); low discharge (500–1000 m³/s); intermediate discharge (1000–2000 m³/s); moderate flood (2000–4000 m³/s); flood (4000–6000 m³/s); extreme flood (>6000 m³/s). The dataset comprised 7 images under dry discharge, 19 under low discharge, 11 under intermediate discharge, and 5 under moderate flow conditions (Figure 1).
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_1.png?raw=true" height="400">
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_1.png" height="400">
 </center>
 <p style="font-size: 0.85em; text-align: center;">
   Partitioning of the acquired images within the six discharge ranges based on typical Po River regime
@@ -63,7 +63,7 @@ During the study period from 2019 to 2022, the discharge measured at the Pontela
 Turbidity patterns in the coastal area varied widely due to different riverine discharge levels, with turbidity values ranging from 0 to 400 FNU. Moderate flood events led to turbidity values exceeding 200 FNU across the downstream river stretch, notably on October 26, 2019, with a discharge of 3862 m³/s, as illustrated in this map. The full time series spanning 2019-2022 can be explored on the RACE Dashboard [here](https://eodash-testing.eox.at/&indicator=CNR_TUR_1).
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_2.png?raw=true" height="400">
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_2.png" height="400">
 </center>
 	   <p style="font-size: 0.85em; text-align: center;">
   S2-derived turbidity map for the Po River delta: October 26, 2019. FNU = the Formazin Nephelometric Unit, which indicates water clarity—higher FNU means cloudier water.
@@ -75,7 +75,7 @@ Turbidity patterns in the coastal area varied widely due to different riverine d
 An intriguing case occurred on April 28, 2022, with  **notably high turbidity values** (about 350 FNU) measured at the gauge stations despite low discharge (776 m³/s), attributed to rapid relative increases in water discharge and maximum peak tide. 
 
 <center>
-<img src=" https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_3.png?raw=true" >
+<img src=" https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_3.png" >
 	     <p style="font-size: 0.85em; text-align: center;">
   S2-derived turbidity map for the Po River delta related to hourly time series of water level measured at Cavanella and Pontelagoscuro station (yellow dots). Vertical red line marks the S2 satellite overpass time.  April 28, 2022
 </p>
@@ -88,7 +88,7 @@ An intriguing case occurred on April 28, 2022, with  **notably high turbidity va
 In several images, as is the case of **September 16, 2019** illustrated in the map, it is possible to observe the presence of a well-defined turbidity front along the river channel that results clearly visible under condition of both low and intermediate discharge (Figures A B below). The distance between the river mouths and turbidity fronts mostly depends on the streamflow and tide, that is fundamental in modulating the dispersion of suspended load (Figures C and D).
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_4.png?raw=true" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_4.png" >
 	     <p style="font-size: 0.85em; text-align: center;">
   S2-derived turbidity maps for the Po River delta related to hourly time series of tidal level measured at Cavanella SIAP station (yellow dot). Vertical red line marks the S2 satellite overpass time. a) September 16, 2019, b) August 21, 2021, c) March 19, 2020, d) January 8, 2022. 
 </p>
@@ -98,7 +98,7 @@ In several images, as is the case of **September 16, 2019** illustrated in the m
 #### Dry discharge regime
 The turbidity maps derived during the river regime known as **"dry discharge”** observed on **21 August 2022** and shown on the map, are characterized by turbidity values below 100 FNU. In few dates (10 September and 21 August 2022 shown side by side ub figure below) it is evident that the turbidity front is significantly displaced upstream with respect to higher discharge regimes. This phenomenon can be **attributed to the tidal current propagation and the inland intrusion of seawater** occurring farther upstream.
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_5.png?raw=true" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_5.png" >
 	   <p style="font-size: 0.85em; text-align: center;">
   S2-derived turbidity maps for the Po River delta related to hourly time series of tidal level measured at Cavanella SIAP station (yellow dot). Vertical red line marks the S2 satellite overpass time. a) August 2, 2021 b) September 10, 2022.
 </p>
@@ -111,7 +111,7 @@ The turbidity maps derived during the river regime known as **"dry discharge”*
 Summer 2022 was characterized by severe drought, resulting in significantly reduced river water levels (panel A on figure below). High spatial resolution satellite imagery revealed **emerged structures** in the riverbed, indicating **extreme water level reductions** (panels B,C and D in the figure). This highlighted the potential of using high-resolution sensors for detecting water level extremes and estimating bathymetry. Additionally, low river levels posed challenges for navigation, emphasizing the importance of satellite imagery for near real-time detection of shallow areas.
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_6.png?raw=true" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_6.png" >
 	    <p style="font-size: 0.85em; text-align: center;">
   Panel A: river level from July 18 2022 to September 16 2022. Panel B: turbidity product derived from the satellite image acquired on July 22 2022. Panel C: turbidity product derived from the satellite image acquired on August 21 2022. Panel D: turbidity product derived from the satellite image acquired on September 10 2022.
 </p>
@@ -136,7 +136,7 @@ Among the various neural network architectures, the **Feed-Forward Neural Networ
 A DFNN structure has been used to **predict CHL anomalies** based on various in-situ and remotely sensed variables. In particular, the network was used to assess the sensitivity of weekly CHL anomalies to these variables and to geographical location. **Four sites** were selected, each representing distinct dynamic processes. These synthetic sites were strategically chosen to represent different environments: near the coast, at the Po River mouth, offshore, and just outside the Venice Lagoon (see figure below).
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_7.png?raw=true" height="500" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_7.png" height="500" >
 	    <p style="font-size: 0.85em; text-align: center;">
   The four selected synthetic stations considered for the AI analysis (coordinates are reported in the inner box)
 </p>
@@ -152,7 +152,7 @@ In this study, **SHAP analysis was applied to two networks** selected from the i
 
 
 <center>
-<img src="https://github.com/eurodatacube/eodash-assets/blob/main/stories/water_turbidity_story/water_turbidity_8.png?raw=true" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_8.png" >
 	    	  <p style="font-size: 0.85em; text-align: center;">
   SHAP feature importance measured as the mean absolute Shapley values
 </p>
