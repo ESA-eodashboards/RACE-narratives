@@ -120,7 +120,12 @@ os.makedirs(output_dir, exist_ok=True)
 metadata_list = []
 for root, _, files in os.walk("."):
     for file in files:
-        if file.endswith(".md") and file != "README.md" and "scripts" not in root:
+        if (
+            file.endswith(".md")
+            and file != "README.md"
+            and "scripts" not in root
+            and "templates" not in root
+        ):
             file_path = os.path.join(root, file)
             metadata = extract_metadata(file_path, BASE_URL)
             if any(metadata.values()):
