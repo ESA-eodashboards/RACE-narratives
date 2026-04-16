@@ -24,7 +24,6 @@ In response to the floods, the [Copernicus Emergency Management Service](https:/
         <a href="https://www.esa.int/ESA_Multimedia/Images/2024/10/Valencia_flood_disaster" target="_blank">
              USGS, processed by ESA
         </a>.
-    </figcaption>
 </figure>
 
 Emergency response required detailed and timely mapping of the flooded areas. This situation highlighted the critical role of satellite Earth Observation (EO) technologies in monitoring, mapping, and responding to natural disasters. 
@@ -52,7 +51,6 @@ The [WASDI platform](https://www.wasdi.cloud/) represents a significant advancem
         <a href="https://www.wasdi.cloud/" target="_blank">
              WASDI Platform
         </a>
-    </figcaption>
 </figure>
 
 The dataset can be acquired via the [Network of Resources (NoR)](https://nor-discover.org/en/news/) request. NoR provides a unique environment for both commercial and non-commercial users to discover, via the NoR Portfolio, a list of European cloud services and estimates of the associated costs to make full use of Earth Observation data. [ESA offers sponsorship](https://nor-discover.org/en/sponsorship/) to eligible entities to cover the costs of trying out these services.
@@ -65,7 +63,6 @@ The dataset can be acquired via the [Network of Resources (NoR)](https://nor-dis
         <a href="https://nor-discover.org/" target="_blank">
              Explore the NoR Portal
         </a>
-    </figcaption>
 </figure>
 
 

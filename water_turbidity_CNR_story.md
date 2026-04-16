@@ -75,7 +75,7 @@ Turbidity patterns in the coastal area varied widely due to different riverine d
 An intriguing case occurred on April 28, 2022, with  **notably high turbidity values** (about 350 FNU) measured at the gauge stations despite low discharge (776 m³/s), attributed to rapid relative increases in water discharge and maximum peak tide. 
 
 <center>
-<img src=" https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_3.png" >
+<img src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/water_turbidity_3.png" >
 	     <p style="font-size: 0.85em; text-align: center;">
   S2-derived turbidity map for the Po River delta related to hourly time series of water level measured at Cavanella and Pontelagoscuro station (yellow dots). Vertical red line marks the S2 satellite overpass time.  April 28, 2022
 </p>
