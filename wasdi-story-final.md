@@ -1,5 +1,5 @@
 ---
-cover-image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Hochwasser_Gars_am_Kamp_2024_03.jpg/1200px-Hochwasser_Gars_am_Kamp_2024_03.jpg?20240914153540
+cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/Floodings/Hochwasser_Gars_am_Kamp_2024_03.jpg
 
 date: 2025-01-01
 theme: climate
@@ -8,7 +8,7 @@ collections: WASDI_FLOOD
  
 ---    
 
-# Mapping the 2024 Central European Floods with Satellite Technology <!--{ as="img" mode="hero" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Hochwasser_Gars_am_Kamp_2024_03.jpg/1200px-Hochwasser_Gars_am_Kamp_2024_03.jpg?20240914153540" }-->
+# Mapping the 2024 Central European Floods with Satellite Technology <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/Floodings/Hochwasser_Gars_am_Kamp_2024_03.jpg" }-->
 ### Using remote sensing data and WASDI workflows to monitor flood evolution in open and urban areas <!--{ style="font-size:1.5rem;opacity:0.7;margin-top:1rem;" }-->
 
 ## The 2024 Central European Floods
