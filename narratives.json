@@ -34,23 +34,6 @@
     "file": "https://esa-eodashboards.github.io/RACE-narratives/IDEAS.md"
   },
   {
-    "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
-    "date": "2025-01-01",
-    "theme": [
-      "water"
-    ],
-    "tags": [
-      "tag1",
-      "tag2"
-    ],
-    "subtitle": "Researchers are uncovering how the Po River behaves under different hydrological conditions with data from Sentinel-2 and ground-based measurements",
-    "provider": "CNR ISMAR",
-    "official": true,
-    "title": "Tracking the Po river from space",
-    "image": "assets/previews/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana_preview.png",
-    "file": "https://esa-eodashboards.github.io/RACE-narratives/water_turbidity_CNR_story.md"
-  },
-  {
     "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/Floodings/Hochwasser_Gars_am_Kamp_2024_03.jpg",
     "date": "2025-01-01",
     "theme": [
@@ -66,5 +49,22 @@
     "subtitle": "Using remote sensing data and WASDI workflows to monitor flood evolution in open and urban areas",
     "image": "assets/previews/Hochwasser_Gars_am_Kamp_2024_03_preview.png",
     "file": "https://esa-eodashboards.github.io/RACE-narratives/wasdi-story-final.md"
+  },
+  {
+    "cover-image": "https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/stories/water_turbidity_story/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana.jpeg",
+    "date": "2025-01-01",
+    "theme": [
+      "water"
+    ],
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
+    "subtitle": "Researchers are uncovering how the Po River behaves under different hydrological conditions with data from Sentinel-2 and ground-based measurements",
+    "provider": "CNR ISMAR",
+    "official": true,
+    "title": "Tracking the Po river from space",
+    "image": "assets/previews/1440px-Torino_-_vista_ponte_Isabella_-_Castello_del_Valentino_e_Mole_Antonelliana_preview.png",
+    "file": "https://esa-eodashboards.github.io/RACE-narratives/water_turbidity_CNR_story.md"
   }
 ]
