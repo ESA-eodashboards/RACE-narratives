@@ -1,0 +1,153 @@
+name: Markdown Link Checker
+
+on:
+  pull_request:
+    branches: [main]
+
+  schedule:
+    - cron: '0 0 1,15 * *'
+
+  workflow_dispatch:
+
+jobs:
+
+  # -------------------------------------------------
+  # PR MODE
+  # -------------------------------------------------
+  pr-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout history branch
+        uses: actions/checkout@v4
+        with:
+          ref: results_ci_checks
+          path: health_history
+        continue-on-error: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Get changed Markdown files
+        id: changed
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **/*.md
+
+      - name: Run link checker on changed files
+        run: |
+          if [ "${{ steps.changed.outputs.any_changed }}" = "true" ]; then
+            echo "Changed files:"
+            echo "${{ steps.changed.outputs.all_changed_files }}"
+
+            python .github/md_link_checker.py \
+              --files ${{ steps.changed.outputs.all_changed_files }}
+
+          else
+            echo "No Markdown files changed."
+          fi
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: md-link-check-report
+          path: .github/link_check_report.html
+          if-no-files-found: ignore
+
+  # -------------------------------------------------
+  # FULL AUDIT MODE
+  # -------------------------------------------------
+  full-audit:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout history branch
+        uses: actions/checkout@v4
+        with:
+          ref: results_ci_checks
+          path: health_history
+        continue-on-error: true
+
+      - name: Create history branch if missing
+        run: |
+          if [ ! -d health_history/.git ]; then
+            mkdir -p health_history
+            cd health_history
+
+            git init
+
+            git checkout -b results_ci_checks
+
+            git remote add origin \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run full Markdown link audit
+        env:
+          FULL_AUDIT: "1"
+          GITHUB_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python .github/md_link_checker.py
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-md-link-audit-report
+          path: .github/link_check_report.html
+          if-no-files-found: ignore
+
+      - name: Ensure correct branch
+        run: |
+          cd health_history
+
+          git checkout results_ci_checks || git checkout -b results_ci_checks
+
+      - name: Commit new health report
+        if: always()
+        run: |
+          cd health_history
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add health_report_*.json
+
+          if git diff --staged --quiet; then
+            echo "No new report to commit."
+          else
+            git commit -m "Markdown health report: $(date -u +%Y-%m-%d)"
+            git push -u origin results_ci_checks
+          fi
