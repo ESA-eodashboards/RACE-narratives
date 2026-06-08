@@ -28,15 +28,14 @@ OUTPUT_HTML = SCRIPT_DIR / "link_check_report.html"
 EXCLUDED_FILES = {"readme.md"}
 
 # History
-HISTORY_DIR = Path(
-    os.environ.get("HISTORY_DIR", REPO_ROOT / "health_history")
-)
+HISTORY_DIR = Path(os.environ.get("HISTORY_DIR", REPO_ROOT / "health_history"))
 HISTORY_PREFIX = "health_report_"
 
 TIMEOUT = 10
 MAX_WORKERS = 20
 
 RUN_URL = os.environ.get("GITHUB_RUN_URL", "")
+
 
 # -------------------------------------------------------------------
 # Normalize URL
@@ -51,6 +50,7 @@ def normalize(url: str) -> str:
     netloc = p.netloc.lower().replace("www.", "")
     path = p.path.rstrip("/")
     return f"{netloc}{path}"
+
 
 # -------------------------------------------------------------------
 # Check URL
@@ -77,6 +77,7 @@ def check_url(task):
             time.sleep(0.3 + random.random() * 0.4)
     return file_key, name, last_final, last_status
 
+
 # -------------------------------------------------------------------
 # Browser-like request helpers (bypass naive bot detection)
 # -------------------------------------------------------------------
@@ -85,16 +86,16 @@ UAS = [
     "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) "
-    "Gecko/20100101 Firefox/127.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0",
 ]
+
 
 def browser_headers(url: str, ua: str) -> dict:
     parsed = urlparse(url)
     return {
         "User-Agent": ua,
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,"
-                  "image/avif,image/webp,*/*;q=0.8",
+        "image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
         "Cache-Control": "no-cache",
@@ -110,30 +111,38 @@ def browser_headers(url: str, ua: str) -> dict:
         "Range": "bytes=0-0",
     }
 
+
 def _do_request(url, ua, use_cffi=False):
     headers = browser_headers(url, ua)
     if use_cffi:
         return cffi_requests.get(
-            url, headers=headers, allow_redirects=True,
-            timeout=TIMEOUT, verify=False, impersonate="chrome124",
+            url,
+            headers=headers,
+            allow_redirects=True,
+            timeout=TIMEOUT,
+            verify=False,
+            impersonate="chrome124",
         )
     s = requests.Session()
     return s.get(
-        url, headers=headers, allow_redirects=True,
-        timeout=TIMEOUT, verify=False,
+        url,
+        headers=headers,
+        allow_redirects=True,
+        timeout=TIMEOUT,
+        verify=False,
     )
+
 
 # -------------------------------------------------------------------
 # Extract links from a Markdown file
 # -------------------------------------------------------------------
 # [text](url) — captures both label and URL
-MD_LINK_RE = re.compile(
-    r'\[([^\]]+)\]\(\s*(https?://[^\s)]+)\s*(?:"[^"]*")?\)'
-)
+MD_LINK_RE = re.compile(r'\[([^\]]+)\]\(\s*(https?://[^\s)]+)\s*(?:"[^"]*")?\)')
 # <https://...>
-ANGLE_URL_RE = re.compile(r'<(https?://[^>\s]+)>')
+ANGLE_URL_RE = re.compile(r"<(https?://[^>\s]+)>")
 # Bare URLs
 BARE_URL_RE = re.compile(r'(?<![\("<\[])\b(https?://[^\s<>\)\]]+)')
+
 
 def extract_links_from_md(text):
     """
@@ -175,6 +184,7 @@ def extract_links_from_md(text):
 
     return results
 
+
 # -------------------------------------------------------------------
 # HTML writer
 # -------------------------------------------------------------------
@@ -208,8 +218,8 @@ Red = already known broken link
             f.write(f'<div class="file">{html.escape(file)}</div>\n')
             for name, url, status in entries:
                 normalized = normalize(url)
-                known_broken = (status != 200 and normalized in prev_broken)
-                newly_broken = (status != 200 and normalized not in prev_broken)
+                known_broken = status != 200 and normalized in prev_broken
+                newly_broken = status != 200 and normalized not in prev_broken
 
                 if status == 200:
                     color, tag = "green", ""
@@ -223,15 +233,15 @@ Red = already known broken link
                     color, tag = "red", ""
 
                 text = f"{name}: {url} [{status}]{tag}"
-                f.write(
-                    f'<div class="entry {color}">{html.escape(text)}</div>\n'
-                )
+                f.write(f'<div class="entry {color}">{html.escape(text)}</div>\n')
         f.write("</body></html>")
+
 
 # -------------------------------------------------------------------
 # Collect tasks (full audit) — every .md file in the repo
 # -------------------------------------------------------------------
 SKIP_DIRS = {".git", "node_modules", "health_history", ".github"}
+
 
 def collect(repo_root: Path):
     tasks = []
@@ -254,6 +264,7 @@ def collect(repo_root: Path):
             for name, url in extract_links_from_md(text):
                 tasks.append((rel, name, url))
     return tasks
+
 
 def collect_from_files(file_paths):
     tasks = []
@@ -281,6 +292,7 @@ def collect_from_files(file_paths):
             tasks.append((rel, name, url))
     return tasks
 
+
 # -------------------------------------------------------------------
 # History helpers
 # -------------------------------------------------------------------
@@ -296,6 +308,7 @@ def load_previous_report():
     except Exception as e:
         print(f"⚠️ Could not read previous report: {e}")
         return None
+
 
 def write_new_report(total_checked, broken_links, ok_links):
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
@@ -317,6 +330,7 @@ def write_new_report(total_checked, broken_links, ok_links):
         json.dump(payload, f, indent=2)
     print(f"📝 Wrote {path}")
     return path
+
 
 # -------------------------------------------------------------------
 # Main
