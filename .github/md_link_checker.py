@@ -7,6 +7,8 @@ import argparse
 import requests
 import html
 import urllib3
+import random
+import time
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 from pathlib import Path
@@ -55,16 +57,71 @@ def normalize(url: str) -> str:
 # -------------------------------------------------------------------
 def check_url(task):
     file_key, name, url = task
-    try:
-        r = requests.get(
-            url,
-            allow_redirects=True,
-            timeout=TIMEOUT,
-            verify=False,
+    last_status = "ERR"
+    last_final = url
+    # Try plain requests with two UAs, then curl_cffi (TLS-fingerprint
+    # impersonation). Stop early on a non-bot-block status.
+    attempts = [(False, UAS[0]), (False, UAS[1]), (True, UAS[4])]
+    for i, (use_cffi, ua) in enumerate(attempts):
+        try:
+            r = _do_request(url, ua, use_cffi=use_cffi)
+            last_final = str(r.url)
+            # Range request → 206 Partial Content means the URL is fine.
+            status = 200 if r.status_code == 206 else r.status_code
+            last_status = status
+            if status not in (403, 405, 429, 503):
+                return file_key, name, last_final, status
+        except Exception:
+            last_status = "ERR"
+        if i < len(attempts) - 1:
+            time.sleep(0.3 + random.random() * 0.4)
+    return file_key, name, last_final, last_status
+
+# -------------------------------------------------------------------
+# Browser-like request helpers (bypass naive bot detection)
+# -------------------------------------------------------------------
+UAS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) "
+    "Gecko/20100101 Firefox/127.0",
+]
+
+def browser_headers(url: str, ua: str) -> dict:
+    parsed = urlparse(url)
+    return {
+        "User-Agent": ua,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,"
+                  "image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Upgrade-Insecure-Requests": "1",
+        "Referer": f"{parsed.scheme}://{parsed.netloc}/",
+        "DNT": "1",
+        # Range avoids HEAD blocks and skips downloading the full body
+        "Range": "bytes=0-0",
+    }
+
+def _do_request(url, ua, use_cffi=False):
+    headers = browser_headers(url, ua)
+    if use_cffi:
+        return cffi_requests.get(
+            url, headers=headers, allow_redirects=True,
+            timeout=TIMEOUT, verify=False, impersonate="chrome124",
         )
-        return file_key, name, r.url, r.status_code
-    except requests.RequestException:
-        return file_key, name, url, "ERR"
+    s = requests.Session()
+    return s.get(
+        url, headers=headers, allow_redirects=True,
+        timeout=TIMEOUT, verify=False,
+    )
 
 # -------------------------------------------------------------------
 # Extract links from a Markdown file
@@ -184,12 +241,10 @@ def collect(repo_root: Path):
         for file in files:
             if not file.lower().endswith(".md"):
                 continue
-
-            fp = Path(root) / file
-            
             if file.lower() in EXCLUDED_FILES:
                 print(f"ℹ️ Skipping excluded file: {fp}")
                 continue
+            fp = Path(root) / file
             try:
                 with open(fp, "r", encoding="utf-8") as f:
                     text = f.read()
