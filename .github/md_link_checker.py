@@ -61,7 +61,7 @@ def check_url(task):
     last_final = url
     # Try plain requests with two UAs, then curl_cffi (TLS-fingerprint
     # impersonation). Stop early on a non-bot-block status.
-    attempts = [(False, UAS[0]), (False, UAS[1]), (True, UAS[4])]
+    attempts = [(False, UAS[0]), (False, UAS[1]), (True, UAS[0])]
     for i, (use_cffi, ua) in enumerate(attempts):
         try:
             r = _do_request(url, ua, use_cffi=use_cffi)
