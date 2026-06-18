@@ -9,6 +9,7 @@ import html
 import urllib3
 import random
 import time
+from curl_cffi import requests as cffi_requests
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 from pathlib import Path
