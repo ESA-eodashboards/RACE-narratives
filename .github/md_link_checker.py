@@ -251,10 +251,10 @@ def collect(repo_root: Path):
         for file in files:
             if not file.lower().endswith(".md"):
                 continue
+            fp = Path(root) / file
             if file.lower() in EXCLUDED_FILES:
                 print(f"ℹ️ Skipping excluded file: {fp}")
                 continue
-            fp = Path(root) / file
             try:
                 with open(fp, "r", encoding="utf-8") as f:
                     text = f.read()
