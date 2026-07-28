@@ -9,8 +9,8 @@ import html
 import urllib3
 import random
 import time
-from curl_cffi import requests as cffi_requests
 from datetime import datetime, timezone
+from curl_cffi import requests as cffi_requests
 from urllib.parse import urlparse
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -58,7 +58,7 @@ def normalize(url: str) -> str:
 # -------------------------------------------------------------------
 def check_url(task):
     file_key, name, url = task
-    last_status = "ERR"
+    last_status = 500
     last_final = url
     # Try plain requests with two UAs, then curl_cffi (TLS-fingerprint
     # impersonation). Stop early on a non-bot-block status.
@@ -73,7 +73,7 @@ def check_url(task):
             if status not in (403, 405, 429, 503):
                 return file_key, name, last_final, status
         except Exception:
-            last_status = "ERR"
+            last_status = 500
         if i < len(attempts) - 1:
             time.sleep(0.3 + random.random() * 0.4)
     return file_key, name, last_final, last_status
@@ -219,10 +219,10 @@ Red = already known broken link
             f.write(f'<div class="file">{html.escape(file)}</div>\n')
             for name, url, status in entries:
                 normalized = normalize(url)
-                known_broken = status != 200 and normalized in prev_broken
-                newly_broken = status != 200 and normalized not in prev_broken
+                known_broken = status >= 400 and normalized in prev_broken
+                newly_broken = status >= 400 and normalized not in prev_broken
 
-                if status == 200:
+                if status < 400:
                     color, tag = "green", ""
                 elif newly_broken:
                     color, tag = "purple", " ⚠️ NEW"
@@ -378,7 +378,7 @@ def main():
                 file, name, url, status = future.result()
                 groups.setdefault(file, []).append((name, url, status))
                 normalized = normalize(url)
-                if status != 200:
+                if status >= 400:
                     if normalized in prev_ok:
                         regressions.append((file, name, url, status))
                         print(f"❌ REGRESSION: {status} {url}")
@@ -418,7 +418,7 @@ def main():
             file, name, url, status = future.result()
             groups.setdefault(file, []).append((name, url, status))
             normalized = normalize(url)
-            if status == 200:
+            if status < 400:
                 ok_links.add(normalized)
             else:
                 broken_links.add(normalized)
