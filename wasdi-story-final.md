@@ -5,7 +5,7 @@ date: 2025-01-01
 theme: climate
 tags: floods,earth-observation,wasdi
 collections: WASDI_FLOOD
- 
+official: true
 ---    
 
 # Mapping the 2024 Central European Floods with Satellite Technology <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/main/stories/Floodings/Hochwasser_Gars_am_Kamp_2024_03.jpg" }-->
