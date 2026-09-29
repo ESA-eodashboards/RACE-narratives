@@ -48,7 +48,7 @@ The core question addressed was whether EO data could be combined with geospatia
  
 <p align="center"><img src="https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/over65_map.png" width="500"/></p>
  
-- **Green Areas Data (Municipality of Torino Open Data)**: Vector files retrieved from the city's official open data portal, mapping the precise polygons of public green spaces across the urban area (including parks, gardens, and tree-lined avenues). Parks and tree cover can lower local temperatures by several degrees through shade and evapotranspiration.
+- **Green Areas Data (Comune di Torino)**: polygons of public green spaces across the urban area (including parks, gardens, and tree-lined avenues), taken from the municipal technical map (Carta tecnica, 1:1000). Parks and tree cover can lower local temperatures by several degrees through shade and evapotranspiration.
  
 <p align="center"><img src="https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/green_areas_map.png" width="500"/></p>
  
@@ -214,7 +214,7 @@ To protect the aging population, the city should establish accessible cooling ce
 | **Sentinel-2 MSI L2A (`COPERNICUS/S2_SR_HARMONIZED`)** | Dataset | Copernicus, via [Google Earth Engine](https://earthengine.google.com/) | Cloud-masked median composite used for NDVI/NDBI |
 | **[Imperviousness HRL 2024](https://land.copernicus.eu/en/products/high-resolution-layer-imperviousness)** | Dataset | Copernicus Land Monitoring Service | Soil sealing %, one of the 4 index components |
 | **[ThermalTrace](https://thermaltrace.climate.copernicus.eu/)** | Dataset / Tool | Copernicus C3S / ECMWF | ERA5 / UTCI daily temperature, used to select and corroborate the heatwave window |
-| **[Geoportale Piemonte](https://www.geoportale.piemonte.it/geonetwork/srv/api/records/c_l219:f71649ef-0855-4f16-abc6-9c6c0a4e4658)** | Dataset | Città di Torino open geodata (CC BY 4.0) | District boundaries, urban green areas, population by age and district |
+| **[Geoportale Piemonte](https://www.geoportale.piemonte.it/geonetwork/srv/api/records/c_l219:f71649ef-0855-4f16-abc6-9c6c0a4e4658)** | Dataset | Comune di Torino | District boundaries, urban green areas, population by age and district |
 | **OpenStreetMap** | Dataset | OSM contributors, via Overpass API / [osmnx](https://osmnx.readthedocs.io/) | Hospitals, schools, elderly-care facility locations |
 | **[Analysis notebook](https://github.com/FrancescoMezza/torino-heat-exposure)** | Code | Team 4 | Reproducible Python workflow developed on the AVL platform |
 | **[Story data](https://github.com/SonaGuliyeva/turin-heat-risk-story)** | Data | Team 4 | Cloud-Optimized GeoTIFFs (night-time LST, NDVI, imperviousness), map styles and figures used in this story |
@@ -231,7 +231,8 @@ To protect the aging population, the city should establish accessible cooling ce
 * Beretta, S. “Meteo oggi 4 agosto: bollino rosso in 25 città su 27, punte di 41°C”, Quotidiano Motori, 4 Aug 2026 — nationwide red-alert heatwave, corroborating the analysis window
  
 ### Geospatial Information (Città di Torino, via Geoportale Piemonte)
-* District boundaries (circoscrizioni) and urban green areas — Comune di Torino open geodata, e.g. Geoportale Piemonte catalog record (CC BY 4.0)
+* District boundaries (circoscrizioni) — Comune di Torino, via Geoportale Piemonte
+* Urban green areas — Comune di Torino, Cartografia in scarico – Carta tecnica, fogli 1:1000 (December 2025 edition), Geoportale Piemonte
 * Population by age and district (“B1 Pop per età annuale e circoscrizione 2025”) — Comune di Torino open data
 * https://dutchclimaterisk.nl/climate-risk/risk-assessment-guidance/
 * https://heat.gov/who-is-most-at-risk-to-extreme-heat/at-risk-older-adults/
