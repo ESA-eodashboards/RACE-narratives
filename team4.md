@@ -8,10 +8,10 @@
  
 ## 
 <p align="center">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykXzo6XdIiDH7WzjEsW9AwJ6HNyaLZ0fDqJoJExBiZOHf7FN_rZqcggo&s=10" alt="ESA Logo" height="120" style="margin: 0 15px;"/>
-<img src="https://upload.wikimedia.org/wikipedia/it/b/be/Logo_Politecnico_Milano.png" alt="Politecnico di Milano" height="120" style="margin: 0 15px;"/>
-<img src="https://lanuovacopisteria.it/wp-content/uploads/2026/01/politecnico-di-torino-polito.jpg" alt="Politecnico di Torino" height="120" style="margin: 0 15px;"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Aristotle_University_of_Thessaloniki_logo.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Aristotle University of Thessaloniki" height="120" style="margin: 0 15px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/European_Space_Agency_logo.svg" alt="European Space Agency" height="60" style="margin: 0 20px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Politecnico_di_Milano_-_wordmark_%28Italy%2C_2024%29.svg" alt="Politecnico di Milano" height="50" style="margin: 0 20px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Politecnico_di_Torino_-_wordmark_%28Italy%2C_2021%29.svg" alt="Politecnico di Torino" height="60" style="margin: 0 20px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Aristotle_University_of_Thessaloniki_logo.svg" alt="Aristotle University of Thessaloniki" height="90" style="margin: 0 20px;"/>
 </p>
  
 ## Introduction
@@ -91,8 +91,8 @@ The risk index is the equally weighted mean of the four components, each scaled 
 **Risk = ¼ · Heat + ¼ · Age + ¼ · Lack of green + ¼ · Imperviousness**
 
 - **Heat:** mean night-time Sentinel-3 LST per district, scaled between 15 °C and 42 °C
-- **Age:** share of residents aged 65 or older
-- **Lack of green:** 1 − (green area of the district ÷ the largest district value)
+- **Age:** share of residents aged 65 or older, divided by the highest district share
+- **Lack of green:** 1 − green area of the district ÷ (1.3 × the largest district value)
 - **Imperviousness:** mean soil sealing per district
 
 The index was calculated for five nights (1, 4, 7, 10 and 13 August 2026) and averaged.
@@ -105,7 +105,7 @@ An overview of the city of Turin, showcasing the urban landscape and surrounding
  
 ### <!--{ zoom=14 center=[7.68,45.07] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
 #### Historical Center
-Centro – Crocetta (C.1) has the highest heat risk in the city (0.65): dense buildings, very little green space and a high share of older residents.
+Centro – Crocetta (C.1) has the highest heat risk in the city (0.65): dense buildings, the least green space and the warmest nights of all districts.
  
 ### <!--{ zoom=13 center=[7.635,45.065] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
 #### Western Districts
@@ -117,7 +117,7 @@ The Turin hill and the Po riverbanks (C.7 and C.8) have the lowest risk in the c
  
 ### <!--{ zoom=13 center=[7.70,45.10] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
 #### Barriera di Milano
-Barriera di Milano – Rebaudengo (C.6) is the youngest district in Turin (20% over 65). Its lower risk (0.43) comes from its age structure rather than from a cooler environment.
+Barriera di Milano – Rebaudengo (C.6) has the lowest share of residents aged 65 or older in Turin. Its lower risk (0.43) comes mainly from its younger population rather than from a cooler environment.
  
 ### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"Tile","properties":{"id":"s2cloudless"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"s2cloudless-2025_3857"}}]' animationOptions='{"duration":500}' }-->
 #### Heat Risk Index
@@ -141,9 +141,9 @@ Barriera di Milano – Rebaudengo (C.6) is the youngest district in Turin (20% o
 - Age is the only vulnerability indicator. Income, living alone or housing quality could be added in a next iteration.
  
 ## Conclusions
-Across the five sampled nights, **Centro – Crocetta (C.1, 0.65)** and **San Paolo – Pozzo Strada (C.3, 0.63)** show the highest heat risk, followed by San Donato – Parella, Borgo Vittoria – Lucento and Santa Rita – Mirafiori (0.53–0.56). These districts combine the least green space with the most sealed surfaces, while the share of residents aged 65 or older is high everywhere in the city (20–25%).
+Across the five sampled nights, **Centro – Crocetta (C.1, 0.65)** and **San Paolo – Pozzo Strada (C.3, 0.63)** show the highest heat risk, followed by San Donato – Parella, Borgo Vittoria – Lucento and Santa Rita – Mirafiori (0.53–0.56). These districts combine the least green space with the most sealed surfaces, while the share of residents aged 65 or older is high in all eight districts.
  
-The lowest risk is found in **Aurora – Vanchiglia (C.7, 0.39)** and **San Salvario – Lingotto – Borgo Po (C.8, 0.41)**, which include the Turin hill and the Po riverbanks: their parks and woods act as a green buffer. **Barriera di Milano – Rebaudengo (C.6, 0.43)** scores low mainly because it has the youngest population.
+The lowest risk is found in **Aurora – Vanchiglia (C.7, 0.39)** and **San Salvario – Lingotto – Borgo Po (C.8, 0.41)**, which include the Turin hill and the Po riverbanks: their parks and woods act as a green buffer. **Barriera di Milano – Rebaudengo (C.6, 0.43)** scores low mainly because it has the youngest population of all districts.
  
 Age differs little between districts, and night-time surface temperature varies by only a few degrees at 1 km resolution. The ranking is therefore driven mostly by green space and soil sealing, which are exactly the parts of heat risk that urban planning can change.
  
