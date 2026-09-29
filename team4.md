@@ -184,7 +184,7 @@ To protect the aging population, the city should establish accessible cooling ce
 * OpenStreetMap contributors — hospitals, schools, elderly-care facilities, queried via Overpass API / osmnx
  
 ## Contributors
-- Francesco Mezza — Coding and data processing
-- Sona Guliyeva — Project lead and supervision
-- Sophia Dolla — Theoretical framework
-- Filippos Kostikiadis — Theoretical framework
+- **Francesco Mezza** — Master's student in Telecommunications Engineering, Politecnico di Milano — Coding and data processing
+- **Sona Guliyeva** — PhD candidate in Urban and Regional Development, Politecnico di Torino — Project lead and supervision
+- **Sophia Dolla** — Master's student in Environmental Physics, Aristotle University of Thessaloniki — Theoretical framework
+- **Filippos Kostikiadis** — Master's student in Environmental Physics, Aristotle University of Thessaloniki — Theoretical framework
