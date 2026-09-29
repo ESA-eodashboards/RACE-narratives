@@ -8,10 +8,10 @@
  
 ## 
 <p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/European_Space_Agency_logo.svg" alt="European Space Agency" height="60" style="margin: 0 20px;"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Politecnico_di_Milano_-_wordmark_%28Italy%2C_2024%29.svg" alt="Politecnico di Milano" height="50" style="margin: 0 20px;"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Politecnico_di_Torino_-_wordmark_%28Italy%2C_2021%29.svg" alt="Politecnico di Torino" height="60" style="margin: 0 20px;"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Aristotle_University_of_Thessaloniki_logo.svg" alt="Aristotle University of Thessaloniki" height="90" style="margin: 0 20px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/European_Space_Agency_logo.svg" alt="European Space Agency" height="55" style="margin: 10px 20px;"/>
+<img src="https://www.polimi.it/_assets/4b51f00386267395f41e0940abbcd656/Images/logo.svg" alt="Politecnico di Milano" height="60" style="margin: 10px 20px;"/>
+<img src="https://www.polito.it/themes/custom/polito_customizations/polito_logo_desktop.svg" alt="Politecnico di Torino" height="70" style="margin: 10px 20px;"/>
+<img src="https://www.auth.gr/wp-content/uploads/banner-horizontal-default-en-1.png" alt="Aristotle University of Thessaloniki" height="70" style="margin: 10px 20px;"/>
 </p>
  
 ## Introduction
