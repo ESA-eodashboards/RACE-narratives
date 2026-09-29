@@ -113,23 +113,23 @@ The index was calculated for five nights (1, 4, 7, 10 and 13 August 2026) and av
 #### Turin Overview
 An overview of the city of Turin, showcasing the urban landscape and surrounding geography.
  
-### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"WebGLTile","properties":{"id":"lst04","title":"Night-time LST 4 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-04.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}},{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}},{"type":"WebGLTile","properties":{"id":"lst04","title":"Night-time LST 4 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-04.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### Night of 4 August: a clear heatwave night
 Night-time surface temperature from Sentinel-3 (dark purple ≈ 18 °C, yellow ≈ 32 °C). Even after sunset the densely built centre and western districts stay warmest, while the hill east of the Po cools down.
  
-### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"WebGLTile","properties":{"id":"lst07","title":"Night-time LST 7 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-07.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}},{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}},{"type":"WebGLTile","properties":{"id":"lst07","title":"Night-time LST 7 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-07.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### Night of 7 August
 Another clear night: the same pattern repeats, with the built-up plain warmer than the green hill.
  
-### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"WebGLTile","properties":{"id":"lst10","title":"Night-time LST 10 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-10.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}},{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=12 center=[7.6869,45.0703] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}},{"type":"WebGLTile","properties":{"id":"lst10","title":"Night-time LST 10 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/lst_night_2026-08-10.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["<",["band",1],15],["color",170,170,170,0.7],["interpolate",["linear"],["band",1],18.0,[0,0,4,1],20.0,[40,11,84,1],22.0,[101,21,110,1],24.0,[159,42,99,1],26.0,[212,72,66,1],28.0,[245,125,21,1],30.0,[250,193,39,1],32.0,[252,255,164,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### Night of 10 August: clouds
 Most of the city was under clouds. Grey areas are values below 15 °C: the satellite saw the cold cloud tops, not the ground. Nights like this one have to be removed before computing the heat index.
  
-### <!--{ zoom=13 center=[7.6869,45.0703] layers='[{"type":"WebGLTile","properties":{"id":"imp","title":"Imperviousness 2024"},"opacity":0.85,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/imperviousness_2024.tif"}]},"style":{"color":["case",["any",["==",["band",2],0],["==",["band",1],255],["<",["band",1],5]],["color",0,0,0,0],["interpolate",["linear"],["band",1],5.0,[255,245,240,1],28.75,[252,187,161,1],52.5,[251,106,74,1],76.25,[203,24,29,1],100.0,[103,0,13,1]]]}},{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=13 center=[7.6869,45.0703] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}},{"type":"WebGLTile","properties":{"id":"imp","title":"Imperviousness 2024"},"opacity":0.85,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/imperviousness_2024.tif"}]},"style":{"color":["case",["any",["==",["band",2],0],["==",["band",1],255],["<",["band",1],5]],["color",0,0,0,0],["interpolate",["linear"],["band",1],5.0,[255,245,240,1],28.75,[252,187,161,1],52.5,[251,106,74,1],76.25,[203,24,29,1],100.0,[103,0,13,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### Sealed surfaces
 Copernicus imperviousness: dark red means almost completely sealed ground (asphalt, concrete, roofs). Sealing is highest in the historical centre, the western districts and the industrial areas in the south-west and north.
  
-### <!--{ zoom=14 center=[7.68,45.07] layers='[{"type":"WebGLTile","properties":{"id":"imp_c","title":"Imperviousness 2024"},"opacity":0.75,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/imperviousness_2024.tif"}]},"style":{"color":["case",["any",["==",["band",2],0],["==",["band",1],255],["<",["band",1],5]],["color",0,0,0,0],["interpolate",["linear"],["band",1],5.0,[255,245,240,1],28.75,[252,187,161,1],52.5,[251,106,74,1],76.25,[203,24,29,1],100.0,[103,0,13,1]]]}},{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=14 center=[7.68,45.07] layers='[{"type":"Tile","properties":{"id":"terrain-light"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"terrain-light_3857"}},{"type":"WebGLTile","properties":{"id":"imp_c","title":"Imperviousness 2024"},"opacity":0.75,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/imperviousness_2024.tif"}]},"style":{"color":["case",["any",["==",["band",2],0],["==",["band",1],255],["<",["band",1],5]],["color",0,0,0,0],["interpolate",["linear"],["band",1],5.0,[255,245,240,1],28.75,[252,187,161,1],52.5,[251,106,74,1],76.25,[203,24,29,1],100.0,[103,0,13,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### Historical Center
 Centro – Crocetta (C.1) has the highest heat risk in the city (0.65): dense buildings, the least green space and the warmest nights of all districts.
  
@@ -137,7 +137,7 @@ Centro – Crocetta (C.1) has the highest heat risk in the city (0.65): dense bu
 #### Western Districts
 San Paolo – Pozzo Strada (C.3) ranks second (0.63): dense housing, little green space and the highest soil sealing in the city. Further south, the former industrial area of Santa Rita – Mirafiori (C.2) ranks fifth.
  
-### <!--{ zoom=13 center=[7.71,45.05] layers='[{"type":"WebGLTile","properties":{"id":"ndvi","title":"NDVI 1-15 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/ndvi_2026-08-01_15.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["interpolate",["linear"],["band",1],-0.1,[165,0,38,1],0.08,[244,109,67,1],0.26,[254,224,139,1],0.44,[217,239,139,1],0.62,[102,189,99,1],0.8,[0,104,55,1]]]}},{"type":"Tile","properties":{"id":"s2cloudless"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"s2cloudless-2025_3857"}}]' animationOptions='{"duration":500}' }-->
+### <!--{ zoom=13 center=[7.71,45.05] layers='[{"type":"Tile","properties":{"id":"s2cloudless"},"source":{"type":"WMTSCapabilities","url":"https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml","layer":"s2cloudless-2025_3857"}},{"type":"WebGLTile","properties":{"id":"ndvi","title":"NDVI 1-15 Aug 2026"},"opacity":0.8,"source":{"type":"GeoTIFF","normalize":false,"sources":[{"url":"https://raw.githubusercontent.com/SonaGuliyeva/turin-heat-risk-story/main/ndvi_2026-08-01_15.tif"}]},"style":{"color":["case",["==",["band",2],0],["color",0,0,0,0],["interpolate",["linear"],["band",1],-0.1,[165,0,38,1],0.08,[244,109,67,1],0.26,[254,224,139,1],0.44,[217,239,139,1],0.62,[102,189,99,1],0.8,[0,104,55,1]]]}}]' animationOptions='{"duration":500}' }-->
 #### The Green Hill Buffer
 The Turin hill and the Po riverbanks (C.7 and C.8) have the lowest risk in the city: their parks and woods act as a natural cooling buffer. On the map, dark green shows dense vegetation (Sentinel-2 NDVI).
  
@@ -167,51 +167,3 @@ Barriera di Milano – Rebaudengo (C.6) has the lowest share of residents aged 6
 - Age is the only vulnerability indicator. Income, living alone or housing quality could be added in a next iteration.
  
 ## Conclusions
-Across the five sampled nights, **Centro – Crocetta (C.1, 0.65)** and **San Paolo – Pozzo Strada (C.3, 0.63)** show the highest heat risk, followed by San Donato – Parella, Borgo Vittoria – Lucento and Santa Rita – Mirafiori (0.53–0.56). These districts combine the least green space with the most sealed surfaces, while the share of residents aged 65 or older is high in all eight districts (23–29%).
- 
-The lowest risk is found in **Aurora – Vanchiglia (C.7, 0.39)** and **San Salvario – Lingotto – Borgo Po (C.8, 0.41)**, which include the Turin hill and the Po riverbanks: their parks and woods act as a green buffer. **Barriera di Milano – Rebaudengo (C.6, 0.43)** scores low mainly because it has the youngest population of all districts.
- 
-Age differs little between districts, and night-time surface temperature varies by only a few degrees at 1 km resolution. The ranking is therefore driven mostly by green space and soil sealing, which are exactly the parts of heat risk that urban planning can change.
- 
-To mitigate urban heat, the city should prioritize de-paving wide avenues and planting shade trees to reduce surface temperatures. In the dense historical center, micro-interventions like green roofs and highly reflective materials are essential to cool narrow streets.
- 
-To protect the aging population, the city should establish accessible cooling centers and implement early warning systems. Additionally, deploying mobile health units and strengthening neighborhood networks will ensure isolated elderly residents stay safe during extreme heatwaves.
- 
-## Open Science
-| **Name** | **Type** | **Agency / Provider** | **Description / Usage** |
-| --- | --- | --- | --- |
-| **[Sentinel-3 SLSTR L2 LST](https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-3-slstr/product-types/level-2-lst)** | Dataset | Copernicus / ESA | Daily (nighttime-pass) Land Surface Temperature, 1–15 Aug 2026 — the core heat-hazard layer of the index |
-| **Sentinel-2 MSI L2A (`COPERNICUS/S2_SR_HARMONIZED`)** | Dataset | Copernicus, via [Google Earth Engine](https://earthengine.google.com/) | Cloud-masked median composite used for NDVI/NDBI |
-| **[Imperviousness HRL 2024](https://land.copernicus.eu/en/products/high-resolution-layer-imperviousness)** | Dataset | Copernicus Land Monitoring Service | Soil sealing %, one of the 4 index components |
-| **[ThermalTrace](https://thermaltrace.climate.copernicus.eu/)** | Dataset / Tool | Copernicus C3S / ECMWF | ERA5 / UTCI daily temperature, used to select and corroborate the heatwave window |
-| **[Geoportale Piemonte](https://www.geoportale.piemonte.it/geonetwork/srv/api/records/c_l219:f71649ef-0855-4f16-abc6-9c6c0a4e4658)** | Dataset | Città di Torino open geodata (CC BY 4.0) | District boundaries, urban green areas, population by age and district |
-| **OpenStreetMap** | Dataset | OSM contributors, via Overpass API / [osmnx](https://osmnx.readthedocs.io/) | Hospitals, schools, elderly-care facility locations |
-| **[Analysis notebook](https://github.com/FrancescoMezza/torino-heat-exposure)** | Code | Team 4 | Reproducible Python workflow developed on the AVL platform |
-| **[Story data](https://github.com/SonaGuliyeva/turin-heat-risk-story)** | Data | Team 4 | Cloud-Optimized GeoTIFFs (night-time LST, NDVI, imperviousness), map styles and figures used in this story |
-| **[EO Dashboard](https://eodashboard.org/explore/?x=7.6869&y=45.0703&z=10.0000&datetime=2026-08-13&template=expert)** | Platform / Web Tool | EO Dashboard Consortium (ESA, NASA, JAXA) | Base layers and visualization tools for interactive exploration |
- 
-## References
-### Earth Observation data
-* Sentinel-3 SLSTR Level-2 LST — Copernicus / ESA
-* Sentinel-2 MSI Level-2A (COPERNICUS/S2_SR_HARMONIZED) — Copernicus, via Google Earth Engine
-* Imperviousness High Resolution Layer 2024 — Copernicus Land Monitoring Service
- 
-### Meteorological context
-* ThermalTrace — daily air / UTCI feels-like temperature, ERA5, Copernicus C3S / ECMWF
-* Beretta, S. “Meteo oggi 4 agosto: bollino rosso in 25 città su 27, punte di 41°C”, Quotidiano Motori, 4 Aug 2026 — nationwide red-alert heatwave, corroborating the analysis window
- 
-### Geospatial Information (Città di Torino, via Geoportale Piemonte)
-* District boundaries (circoscrizioni) and urban green areas — Comune di Torino open geodata, e.g. Geoportale Piemonte catalog record (CC BY 4.0)
-* Population by age and district (“B1 Pop per età annuale e circoscrizione 2025”) — Comune di Torino open data
-* https://dutchclimaterisk.nl/climate-risk/risk-assessment-guidance/
-* https://heat.gov/who-is-most-at-risk-to-extreme-heat/at-risk-older-adults/
-* https://www.sciencedirect.com/science/article/pii/S2212096325000452
- 
-### Points of interest
-* OpenStreetMap contributors — hospitals, schools, elderly-care facilities, queried via Overpass API / osmnx
- 
-## Contributors
-- **Francesco Mezza** — Master's student in Telecommunications Engineering, Politecnico di Milano — Coding and data processing
-- **Sona Guliyeva** — PhD candidate in Urban and Regional Development, Politecnico di Torino — Project lead and supervision
-- **Sophia Dolla** — Master's student in Environmental Physics, Aristotle University of Thessaloniki — Theoretical framework
-- **Filippos Kostikiadis** — Master's student in Environmental Physics, Aristotle University of Thessaloniki — Theoretical framework
