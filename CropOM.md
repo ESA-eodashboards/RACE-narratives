@@ -1,5 +1,5 @@
 ---
-cover-image: https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg
+cover-image: https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/collections/crop_forecast_CropOM/cover_image.png
 date: 2025-01-01
 theme: "food & agriculture"
 subtitle: During growing season, estimates or forecasts of crop yields at the county or regional level can provide highly useful insights.
@@ -8,7 +8,7 @@ provider: CropOM
 official: true
 ---
 
-# CropOM County level crop yield and water demand <!--{ as="img" mode="hero" src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/09/watering_crops/17679972-1-eng-GB/Watering_crops_pillars.jpg" }-->
+# CropOM County level crop yield and water demand <!--{ as="img" mode="hero" src="https://raw.githubusercontent.com/eurodatacube/eodash-assets/refs/heads/main/collections/crop_forecast_CropOM/cover_image.png" }-->
 
 ##
 
