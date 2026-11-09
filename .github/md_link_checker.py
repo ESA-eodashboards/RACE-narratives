@@ -9,10 +9,12 @@ import html
 import urllib3
 import random
 import time
+import string
 from datetime import datetime, timezone
-from curl_cffi import requests as cffi_requests
-from urllib.parse import urlparse
+from urllib.parse import quote, unquote, urlparse
 from pathlib import Path
+from html.parser import HTMLParser
+from curl_cffi import requests as cffi_requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -45,8 +47,8 @@ def normalize(url: str) -> str:
     if not url:
         return ""
     url = html.unescape(url.strip())
-    if not url.startswith("http"):
-        return ""
+    if not url.startswith(("http://", "https://")):
+        return f"local:{unquote(urlparse(url).path)}"
     p = urlparse(url)
     netloc = p.netloc.lower().replace("www.", "")
     path = p.path.rstrip("/")
@@ -58,6 +60,14 @@ def normalize(url: str) -> str:
 # -------------------------------------------------------------------
 def check_url(task):
     file_key, name, url = task
+    if not url.startswith(("http://", "https://")):
+        try:
+            path = (REPO_ROOT / unquote(urlparse(url).path)).resolve()
+            exists = path.is_relative_to(REPO_ROOT.resolve()) and path.is_file()
+        except (OSError, RuntimeError, ValueError):
+            exists = False
+        status = 200 if exists else 404
+        return file_key, name, url, status
     last_status = 500
     last_final = url
     # Try plain requests with two UAs, then curl_cffi (TLS-fingerprint
@@ -66,9 +76,12 @@ def check_url(task):
     for i, (use_cffi, ua) in enumerate(attempts):
         try:
             r = _do_request(url, ua, use_cffi=use_cffi)
-            last_final = str(r.url)
-            # Range request → 206 Partial Content means the URL is fine.
-            status = 200 if r.status_code == 206 else r.status_code
+            try:
+                last_final = str(r.url)
+                # Range request status 206 means the URL is available.
+                status = 200 if r.status_code == 206 else r.status_code
+            finally:
+                r.close()
             last_status = status
             if status not in (403, 405, 429, 503):
                 return file_key, name, last_final, status
@@ -123,33 +136,130 @@ def _do_request(url, ua, use_cffi=False):
             timeout=TIMEOUT,
             verify=False,
             impersonate="chrome124",
+            stream=True,
         )
-    s = requests.Session()
-    return s.get(
+    return requests.get(
         url,
         headers=headers,
         allow_redirects=True,
         timeout=TIMEOUT,
         verify=False,
+        stream=True,
     )
 
 
 # -------------------------------------------------------------------
 # Extract links from a Markdown file
 # -------------------------------------------------------------------
-# [text](url) — captures both label and URL
-MD_LINK_RE = re.compile(r'\[([^\]]+)\]\(\s*(https?://[^\s)]+)\s*(?:"[^"]*")?\)')
+# Keep ordinary links HTTP-only; media may also reference repository files.
+MD_LINK_RE = re.compile(r'\[([^\]]*)\]\(\s*(https?://[^\s)]+)\s*(?:"[^"]*")?\)')
+MD_IMAGE_START_RE = re.compile(r"!\[([^\]]*)\]\(\s*")
+MD_ESCAPE_RE = re.compile(r"\\([" + re.escape(string.punctuation) + r"])")
+MD_IMAGE_REF_RE = re.compile(r"!\[([^\]]*)\](?:\[([^\]]*)\])?(?!\()")
+MD_REFERENCE_RE = re.compile(
+    r"^ {0,3}\[([^\]]+)\]:\s*(?:<([^>]+)>|(\S+))", re.MULTILINE
+)
+
+
+def reference_key(label: str) -> str:
+    return " ".join(label.split()).casefold()
+
+
+def extract_markdown_images(text: str) -> tuple[list[tuple[str, str]], str]:
+    """Read balanced image destinations and remove only complete image markup."""
+    images: list[tuple[str, str]] = []
+    remaining: list[str] = []
+    consumed = 0
+    for match in MD_IMAGE_START_RE.finditer(text):
+        if match.start() < consumed:
+            continue
+        start = match.end()
+        end = start
+        if start < len(text) and text[start] == "<":
+            start += 1
+            end = text.find(">", start)
+            if end == -1:
+                continue
+            suffix_start = end + 1
+        else:
+            depth = 0
+            while end < len(text):
+                char = text[end]
+                if char == "\\" and end + 1 < len(text):
+                    end += 2
+                    continue
+                if char == "(":
+                    depth += 1
+                elif char == ")":
+                    if depth == 0:
+                        break
+                    depth -= 1
+                elif char.isspace() and depth == 0:
+                    break
+                end += 1
+            suffix_start = end
+        suffix = re.match(
+            r"""\s*(?:"[^"]*"|'[^']*'|\([^)]*\))?\s*\)""", text[suffix_start:]
+        )
+        if not suffix or end == start:
+            continue
+        target = MD_ESCAPE_RE.sub(r"\1", text[start:end])
+        images.append((match.group(1).strip() or "<image>", target))
+        remaining.append(text[consumed : match.start()])
+        consumed = suffix_start + suffix.end()
+    remaining.append(text[consumed:])
+    return images, "".join(remaining)
+
+
+class MediaParser(HTMLParser):
+    """Extract media and anchor attributes without including surrounding markup."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.links: list[tuple[str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "a":
+            href = attributes.get("href", "") or ""
+            if urlparse(href.strip()).scheme in {"http", "https"}:
+                self.links.append(("<a>", href))
+            return
+        if tag not in {"img", "video", "source", "iframe"}:
+            return
+        label = attributes.get("alt") or f"<{tag}>"
+        src = attributes.get("src")
+        if src:
+            self.links.append((label, src))
+        poster = attributes.get("poster")
+        if tag == "video" and poster:
+            self.links.append(("<video poster>", poster))
+
+
+def media_url(url: str) -> str:
+    """Return a remote or local media target, ignoring embedded/non-file schemes."""
+    url = html.unescape(url.strip())
+    if url.startswith("//"):
+        return f"https:{url}"
+    if not url or url.startswith("#"):
+        return ""
+    parsed = urlparse(url)
+    if parsed.scheme:
+        return parsed.geturl() if parsed.scheme in {"http", "https"} else ""
+    return url
+
+
 # <https://...>
 ANGLE_URL_RE = re.compile(r"<(https?://[^>\s]+)>")
 # Bare URLs
 BARE_URL_RE = re.compile(r'(?<![\("<\[])\b(https?://[^\s<>\)\]]+)')
 
 
-def extract_links_from_md(text):
+def extract_links_from_md(text: str) -> list[tuple[str, str]]:
     """
-    Returns list of (label, url). label = link text for [text](url),
-    or "<bare>" for unlabeled URLs.
-    Strips trailing punctuation from bare URLs.
+    Return (label, target) pairs for links, Markdown images and HTML media.
+    Media targets may be HTTP URLs or repository-local paths. Ordinary links
+    remain HTTP-only. Strip trailing punctuation from bare URLs.
     """
     results = []
     seen = set()
@@ -157,9 +267,44 @@ def extract_links_from_md(text):
     # Remove fenced code blocks so we don't check sample URLs there.
     text_wo_code = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
     text_wo_code = re.sub(r"`[^`]*`", "", text_wo_code)
+    text_wo_code = re.sub(r"<!--.*?-->", "", text_wo_code, flags=re.DOTALL)
+
+    # Extract media before scanning ordinary links to avoid malformed bare URLs.
+    parser = MediaParser()
+    parser.feed(text_wo_code)
+    media = list(parser.links)
+    references: dict[str, str] = {}
+    for match in MD_REFERENCE_RE.finditer(text_wo_code):
+        references.setdefault(
+            reference_key(match.group(1)), match.group(2) or match.group(3)
+        )
+    images, text_wo_code = extract_markdown_images(text_wo_code)
+    media.extend(images)
+    image_references: set[str] = set()
+    for match in MD_IMAGE_REF_RE.finditer(text_wo_code):
+        key = reference_key(match.group(2) or match.group(1))
+        target = references.get(key)
+        if target:
+            image_references.add(key)
+            media.append(
+                (match.group(1).strip() or "<image>", MD_ESCAPE_RE.sub(r"\1", target))
+            )
+    for label, target in media:
+        url = media_url(target)
+        if url and (label, url) not in seen:
+            seen.add((label, url))
+            results.append((label, url))
+    text_wo_code = MD_IMAGE_REF_RE.sub("", text_wo_code)
+    text_wo_code = MD_REFERENCE_RE.sub(
+        lambda match: (
+            "" if reference_key(match.group(1)) in image_references else match.group(0)
+        ),
+        text_wo_code,
+    )
+    text_wo_code = re.sub(r"</?[A-Za-z][A-Za-z0-9-]*(?:\s[^>]*|/?)>", "", text_wo_code)
 
     for m in MD_LINK_RE.finditer(text_wo_code):
-        label = m.group(1).strip()
+        label = m.group(1).strip() or "<link>"
         url = m.group(2).strip().rstrip(".,;:!?")
         key = (label, url)
         if key not in seen:
@@ -241,7 +386,32 @@ Red = already known broken link
 # -------------------------------------------------------------------
 # Collect tasks (full audit) — every .md file in the repo
 # -------------------------------------------------------------------
-SKIP_DIRS = {".git", "node_modules", "health_history", ".github"}
+SKIP_DIRS = {
+    ".git",
+    ".serena",
+    "node_modules",
+    ".venv",
+    "venv",
+    "health_history",
+    ".github",
+}
+
+
+def resolve_media_tasks(
+    text: str, markdown_path: Path, repo_root: Path
+) -> list[tuple[str, str]]:
+    """Resolve local media relative to its Markdown file, not the process cwd."""
+    links: list[tuple[str, str]] = []
+    for name, url in extract_links_from_md(text):
+        if not url.startswith(("http://", "https://")):
+            local_path = unquote(urlparse(url).path)
+            if local_path.startswith("/"):
+                target = repo_root / local_path.lstrip("/")
+            else:
+                target = markdown_path.parent / local_path
+            url = quote(os.path.relpath(target, repo_root), safe="/")
+        links.append((name, url))
+    return links
 
 
 def collect(repo_root: Path):
@@ -253,7 +423,7 @@ def collect(repo_root: Path):
             if not file.lower().endswith(".md"):
                 continue
             fp = Path(root) / file
-            if file.lower() in EXCLUDED_FILES:
+            if file.lower() in EXCLUDED_FILES or file.startswith("session-"):
                 print(f"ℹ️ Skipping excluded file: {fp}")
                 continue
             try:
@@ -262,7 +432,7 @@ def collect(repo_root: Path):
             except Exception:
                 continue
             rel = fp.relative_to(repo_root).as_posix()
-            for name, url in extract_links_from_md(text):
+            for name, url in resolve_media_tasks(text, fp, repo_root):
                 tasks.append((rel, name, url))
     return tasks
 
@@ -271,7 +441,7 @@ def collect_from_files(file_paths):
     tasks = []
     for fp in file_paths:
         p = Path(fp)
-        if p.name.lower() in EXCLUDED_FILES:
+        if p.name.lower() in EXCLUDED_FILES or p.name.startswith("session-"):
             print(f"ℹ️ Skipping excluded file: {fp}")
             continue
         if not p.exists() or not p.is_file():
@@ -289,7 +459,7 @@ def collect_from_files(file_paths):
             rel = p.resolve().relative_to(REPO_ROOT).as_posix()
         except ValueError:
             rel = p.as_posix()
-        for name, url in extract_links_from_md(text):
+        for name, url in resolve_media_tasks(text, p, REPO_ROOT):
             tasks.append((rel, name, url))
     return tasks
 
