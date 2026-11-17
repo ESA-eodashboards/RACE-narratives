@@ -1,0 +1,114 @@
+name: Preview narratives
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+# do not allow running multiple of pipelines for this PR in parallel
+concurrency: preview-${{ github.ref }}
+jobs:
+  preview_changed_files:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      packages: read
+    name: Deploy changed-files
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          submodules: 'true'
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Get commit message from PR head branch
+        id: get_pr_commit_message
+        run: |
+          PR_COMMIT_SHA=${{ github.event.pull_request.head.sha }}
+          PR_REPO_OWNER=${{ github.event.pull_request.head.repo.owner.login }}
+          PR_REPO_NAME=${{ github.event.pull_request.head.repo.name }}
+          # Fetch the commit message from the PR's head branch
+          COMMIT_MESSAGE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${PR_REPO_OWNER}/${PR_REPO_NAME}/commits/${PR_COMMIT_SHA}" \
+            | jq -r .commit.message)
+          # Setting skip flag.
+           if [[ "$COMMIT_MESSAGE" == *"create session using empty commit"* ]]; then
+            echo "should_skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: github.event.action != 'closed' && steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Install Dependencies
+        run: pip install markdown pyaml pillow requests
+
+      - if: github.event.action != 'closed' && steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Extract metadata
+        run: |
+          mkdir -p output
+          python .github/extract_metadata.py "https://ESA-eodashboards.github.io/RACE-narratives/pr-preview/pr-${{ github.event.pull_request.number }}"
+          cp *.md output
+          touch output/.nojekyll
+      - if: steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Deploy preview
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
+        with:
+          source-dir: ./output/
+          comment: false
+      - if: github.event.action != 'closed' && steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Find existing comment
+        id: find-comment
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions
+          body-includes: 'Preview ready!'
+      - if: github.event.action != 'closed' && steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Create or update preview comment
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Preview ready!
+
+            👉 [View your narrative changes preview](https://eoxhub-workspaces.github.io/preview-narratives/?preview_url=https://esa-eodashboards.github.io/RACE-narratives/pr-preview/pr-${{ github.event.pull_request.number }}/)
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
+      - if: github.event.action != 'closed' && steps.get_pr_commit_message.outputs.should_skip != 'true'
+        name: Wait for GitHub Pages deployment workflow
+        run: |
+          echo "Waiting for GitHub Pages deployment to complete..."
+          ATTEMPTS=0
+          MAX_ATTEMPTS=30
+          DELAY=10
+      
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            RUN=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/actions/runs \
+              | jq '.workflow_runs[] | select(.name=="pages build and deployment")' \
+              | jq -s 'sort_by(.run_started_at) | reverse | .[0]')
+      
+            STATUS=$(echo "$RUN" | jq -r '.status')
+            CONCLUSION=$(echo "$RUN" | jq -r '.conclusion')
+      
+            echo "Current pages-build-deployment status: $STATUS / $CONCLUSION"
+      
+            if [[ "$STATUS" == "completed" ]]; then
+              if [[ "$CONCLUSION" == "success" ]]; then
+                echo "✅ GitHub Pages deployment completed successfully."
+                exit 0
+              else
+                echo "❌ GitHub Pages deployment failed."
+                exit 1
+              fi
+            fi
+      
+            ATTEMPTS=$((ATTEMPTS+1))
+            sleep $DELAY
+          done
+      
+          echo "⚠️ Timed out waiting for GitHub Pages deployment."
+          exit 1
